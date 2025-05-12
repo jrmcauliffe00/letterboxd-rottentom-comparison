@@ -1,5 +1,9 @@
 ### Letterboxd Film Scraper
 
+### New workflow to compare ratings with rot tom
+
+![Flow Diagram](./flowchart.png)
+
 A script that scrapes films from a Letterboxd user's public diary.
 
 ```shell
