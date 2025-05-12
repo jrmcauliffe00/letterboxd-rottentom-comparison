@@ -1,18 +1,21 @@
 {
   "name": "letterboxd-scraper",
-    "version": "1.0.0",
-    "main": "server.js",
-    "license": "MIT",
-    "author": {
-      "name": "Javier Arce",
-      "email": "javierarce@gmail.com",
-      "url": "https://javier.computer"
-    },
-    "scripts": {
-      "start": "node letterboxd.js"
-    },
-    "dependencies": {
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "author": {
+    "name": "Javier Arce",
+    "email": "javierarce@gmail.com",
+    "url": "https://javier.computer"
+  },
+  "scripts": {
+    "start": "node letterboxd.js"
+  },
+  "dependencies": {
+    "execSync": "^1.0.2",
     "node-fetch": "^2.0.0",
-    "node-html-parser": "^5.2.0"
-    }
+    "node-html-parser": "^5.2.0",
+    "papaparse": "^5.5.2",
+    "sql.js": "^1.13.0"
+  }
 }

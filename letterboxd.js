@@ -34,22 +34,27 @@ async function scrapeFilms() {
   for (let i = 1; i <= totalPages; i++) {
     const pageRoot = await fetchPage(i)
     const filmEntries = pageRoot.querySelectorAll('.diary-entry-row')
+    // console.log('here is the filmentries: ', filmEntries[0]) //.querySelector('.edit-review-button'))
+
 
     filmEntries.forEach(entry => {
       const $metadata = entry.querySelector('.edit-review-button')
       const $actions = entry.querySelector('.film-actions')
-
-      const permalink = $actions.getAttribute('data-film-slug')
-      const watchedOn = $metadata.getAttribute('data-viewing-date')
-      const filmTitle = $metadata.getAttribute('data-film-name')
-      const rewatched = $metadata.getAttribute('data-rewatch') === 'true'
-
-      const year = $metadata.getAttribute('data-film-year')
-      const title = `${filmTitle} (${year})`
-      const rating = parseInt($metadata.getAttribute('data-rating'), 10) / 2
-
-      console.log(`${title} - ${rating} stars`)
-      films.push({ watched_on: watchedOn, title, rating, rewatched, permalink })
+      const $ratingField = entry.querySelector('.rateit-field')
+    
+      const permalink = $actions?.getAttribute('data-film-slug') || 'unknown'
+      const filmTitle = $actions?.getAttribute('data-film-name') || 'Untitled'
+      // const watchedOn = $metadata?.getAttribute('data-viewing-date') || 'unknown'
+      const rewatched = $metadata?.getAttribute('data-rewatch') === 'true'
+    
+      const year = entry.querySelector('.td-released span')?.textContent?.trim() || 'unknown'
+      const title = `${filmTitle}`
+    
+      const ratingRaw = $ratingField?.getAttribute('value')
+      const rating = ratingRaw ? parseInt(ratingRaw, 10) / 2 : null
+    
+      console.log(`${title} - ${rating ?? 'No'} stars`)
+      films.push({ title, rating, rewatched, permalink })
     })
   }
 
