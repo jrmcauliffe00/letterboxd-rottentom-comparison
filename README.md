@@ -2,7 +2,14 @@
 
 ### New workflow to compare ratings with rot tom
 
-![Flow Diagram](./flowchart.png)
+```mermaid
+flowchart TD;
+    C["Start Workflow"] --> D["Fetch Ratings for Username"] --> E["Match Against Rotten Tomatoes Data"]
+    E --> F["Write Final Matched CSV"]
+    F --> G["Output: output.csv"]
+    G --> H["End"]
+```
+
 
 A script that scrapes films from a Letterboxd user's public diary.
 
