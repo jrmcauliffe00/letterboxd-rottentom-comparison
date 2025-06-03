@@ -106,3 +106,6 @@ dist
 
 # ctags
 tags
+
+# rotten tomatoes raw data
+movies_info.csv
